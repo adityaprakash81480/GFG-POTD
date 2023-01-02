@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    vector<int> maximumValue(Node* root) {
+        //code here
+        queue<Node*> que;
+        vector<int>ans;
+        que.push(root);
+        while(que.size()>0){
+            int m=0;
+            int s=que.size();
+           // node* p=que.front();
+           // m=max(m,p->data);
+            while(s--){
+                Node* p=que.front();
+                m=max(m,p->data);
+                que.pop();
+                if(p->left!=NULL) que.push(p->left);
+                if(p->right!=NULL) que.push(p->right);
+            }
+            ans.push_back(m);
+        }
+        return ans;
+    }
+};
